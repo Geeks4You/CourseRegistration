@@ -59,9 +59,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,8 +81,9 @@
             this.maintainToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.MdiWindowListItem = this.windowToolStripMenuItem;
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(898, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(708, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -105,19 +103,20 @@
             this.filePrintToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("filePrintToolStripMenuItem.Image")));
             this.filePrintToolStripMenuItem.Name = "filePrintToolStripMenuItem";
             this.filePrintToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.filePrintToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.filePrintToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.filePrintToolStripMenuItem.Text = "&Print...";
             // 
             // fileSep1ToolStripMenuItem
             // 
             this.fileSep1ToolStripMenuItem.Name = "fileSep1ToolStripMenuItem";
-            this.fileSep1ToolStripMenuItem.Size = new System.Drawing.Size(146, 6);
+            this.fileSep1ToolStripMenuItem.Size = new System.Drawing.Size(149, 6);
             // 
             // fileExitToolStripMenuItem
             // 
             this.fileExitToolStripMenuItem.Name = "fileExitToolStripMenuItem";
-            this.fileExitToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.fileExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fileExitToolStripMenuItem.Text = "E&xit";
+            this.fileExitToolStripMenuItem.Click += new System.EventHandler(this.fileExitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -271,6 +270,7 @@
             this.facultyToolStripMenuItem.Name = "facultyToolStripMenuItem";
             this.facultyToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.facultyToolStripMenuItem.Text = "Faculty...";
+            this.facultyToolStripMenuItem.Click += new System.EventHandler(this.facultyToolStripMenuItem_Click);
             // 
             // coursesToolStripMenuItem
             // 
@@ -305,6 +305,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpHelpToolStripMenuItem
             // 
@@ -313,46 +314,14 @@
             this.helpHelpToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.helpHelpToolStripMenuItem.Text = "Help";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(281, 168);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(372, 37);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "UNIVERSITY of TEAM C";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(238, 117);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(467, 44);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "COURSE REGISTRATION";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(375, 215);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(181, 14);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "All Rights Reserved, Copyright 2016";
-            // 
             // CourseRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 357);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(708, 445);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label1);
+            this.IsMdiContainer = true;
             this.Name = "CourseRegistration";
             this.Text = "Course Registration Program";
             this.Load += new System.EventHandler(this.CourseRegistration_Load);
@@ -395,9 +364,6 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpHelpToolStripMenuItem;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
 
 
     }

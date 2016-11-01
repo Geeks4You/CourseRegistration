@@ -50,10 +50,30 @@
     <Compile Include="CourseRegistration.Designer.cs">
       <DependentUpon>CourseRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Faculty.cs" />
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMaintainFaculty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaintainFaculty.Designer.cs">
+      <DependentUpon>frmMaintainFaculty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Globals.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CourseRegistration.resx">
       <DependentUpon>CourseRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaintainFaculty.resx">
+      <DependentUpon>frmMaintainFaculty.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -64,6 +84,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Faculty.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -76,6 +97,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MenuIcons\copy.bmp" />
+    <Content Include="MenuIcons\course.ICO" />
+    <Content Include="MenuIcons\cut.ico" />
+    <Content Include="MenuIcons\Delete.bmp" />
+    <Content Include="MenuIcons\edit_find.bmp" />
+    <Content Include="MenuIcons\edit_redo.bmp" />
+    <Content Include="MenuIcons\edit_undo.bmp" />
+    <Content Include="MenuIcons\faculty.ico" />
+    <Content Include="MenuIcons\file_print.bmp" />
+    <Content Include="MenuIcons\help.ico" />
+    <Content Include="MenuIcons\paste.bmp" />
+    <Content Include="MenuIcons\registration.ICO" />
+    <Content Include="MenuIcons\student.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

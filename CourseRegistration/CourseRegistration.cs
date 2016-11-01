@@ -51,5 +51,23 @@ namespace CourseRegistration
         {
 
         }
+
+        private void facultyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMaintainFaculty fMaintainFaculty = new frmMaintainFaculty();
+            fMaintainFaculty.MdiParent = this;
+            fMaintainFaculty.Show();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAbout fAbout = new frmAbout();
+            fAbout.ShowDialog();
+        }
+
+        private void fileExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
