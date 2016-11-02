@@ -59,6 +59,13 @@ namespace CourseRegistration
             fMaintainFaculty.Show();
         }
 
+        private void coursesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMaintainCourse fMaintainCourse = new frmMaintainCourse();
+            fMaintainCourse.MdiParent = this;
+            fMaintainCourse.Show();
+        }
+
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAbout fAbout = new frmAbout();
@@ -69,5 +76,6 @@ namespace CourseRegistration
         {
             this.Close();
         }
+
     }
 }

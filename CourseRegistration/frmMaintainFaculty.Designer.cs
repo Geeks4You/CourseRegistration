@@ -129,7 +129,7 @@
             // 
             // mtbPhone
             // 
-            this.mtbPhone.Location = new System.Drawing.Point(252, 226);
+            this.mtbPhone.Location = new System.Drawing.Point(255, 226);
             this.mtbPhone.Mask = "(999)000-0000";
             this.mtbPhone.Name = "mtbPhone";
             this.mtbPhone.Size = new System.Drawing.Size(128, 20);
@@ -138,7 +138,7 @@
             // 
             // mtbZip
             // 
-            this.mtbZip.Location = new System.Drawing.Point(252, 204);
+            this.mtbZip.Location = new System.Drawing.Point(255, 204);
             this.mtbZip.Mask = "00000-9999";
             this.mtbZip.Name = "mtbZip";
             this.mtbZip.Size = new System.Drawing.Size(128, 20);
@@ -149,7 +149,7 @@
             // 
             this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboState.FormattingEnabled = true;
-            this.cboState.Location = new System.Drawing.Point(252, 182);
+            this.cboState.Location = new System.Drawing.Point(255, 182);
             this.cboState.Name = "cboState";
             this.cboState.Size = new System.Drawing.Size(128, 21);
             this.cboState.TabIndex = 8;
@@ -157,7 +157,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(252, 248);
+            this.txtEmail.Location = new System.Drawing.Point(255, 248);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(256, 20);
             this.txtEmail.TabIndex = 11;
@@ -173,7 +173,7 @@
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(252, 160);
+            this.txtCity.Location = new System.Drawing.Point(255, 160);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(128, 20);
             this.txtCity.TabIndex = 7;
@@ -181,7 +181,7 @@
             // 
             // txtAddressLine2
             // 
-            this.txtAddressLine2.Location = new System.Drawing.Point(252, 138);
+            this.txtAddressLine2.Location = new System.Drawing.Point(255, 138);
             this.txtAddressLine2.Name = "txtAddressLine2";
             this.txtAddressLine2.Size = new System.Drawing.Size(128, 20);
             this.txtAddressLine2.TabIndex = 6;
@@ -189,7 +189,7 @@
             // 
             // txtAddressLine1
             // 
-            this.txtAddressLine1.Location = new System.Drawing.Point(252, 116);
+            this.txtAddressLine1.Location = new System.Drawing.Point(255, 116);
             this.txtAddressLine1.Name = "txtAddressLine1";
             this.txtAddressLine1.Size = new System.Drawing.Size(128, 20);
             this.txtAddressLine1.TabIndex = 5;
@@ -213,7 +213,7 @@
             // 
             // lblEmail
             // 
-            this.lblEmail.Location = new System.Drawing.Point(150, 248);
+            this.lblEmail.Location = new System.Drawing.Point(153, 248);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(96, 16);
             this.lblEmail.TabIndex = 53;
@@ -222,7 +222,7 @@
             // 
             // lblProgram
             // 
-            this.lblProgram.Location = new System.Drawing.Point(150, 94);
+            this.lblProgram.Location = new System.Drawing.Point(147, 94);
             this.lblProgram.Name = "lblProgram";
             this.lblProgram.Size = new System.Drawing.Size(96, 16);
             this.lblProgram.TabIndex = 50;
@@ -231,7 +231,7 @@
             // 
             // lblPhone
             // 
-            this.lblPhone.Location = new System.Drawing.Point(150, 226);
+            this.lblPhone.Location = new System.Drawing.Point(153, 226);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(96, 16);
             this.lblPhone.TabIndex = 49;
@@ -240,7 +240,7 @@
             // 
             // lblZip
             // 
-            this.lblZip.Location = new System.Drawing.Point(150, 204);
+            this.lblZip.Location = new System.Drawing.Point(153, 204);
             this.lblZip.Name = "lblZip";
             this.lblZip.Size = new System.Drawing.Size(96, 16);
             this.lblZip.TabIndex = 47;
@@ -249,7 +249,7 @@
             // 
             // lblState
             // 
-            this.lblState.Location = new System.Drawing.Point(150, 182);
+            this.lblState.Location = new System.Drawing.Point(153, 182);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(96, 16);
             this.lblState.TabIndex = 45;
@@ -258,7 +258,7 @@
             // 
             // lblCity
             // 
-            this.lblCity.Location = new System.Drawing.Point(150, 160);
+            this.lblCity.Location = new System.Drawing.Point(153, 160);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(96, 16);
             this.lblCity.TabIndex = 43;
@@ -267,7 +267,7 @@
             // 
             // lblAddressLine2
             // 
-            this.lblAddressLine2.Location = new System.Drawing.Point(150, 138);
+            this.lblAddressLine2.Location = new System.Drawing.Point(153, 138);
             this.lblAddressLine2.Name = "lblAddressLine2";
             this.lblAddressLine2.Size = new System.Drawing.Size(96, 16);
             this.lblAddressLine2.TabIndex = 40;
@@ -276,7 +276,7 @@
             // 
             // lblAddressLine1
             // 
-            this.lblAddressLine1.Location = new System.Drawing.Point(150, 116);
+            this.lblAddressLine1.Location = new System.Drawing.Point(153, 116);
             this.lblAddressLine1.Name = "lblAddressLine1";
             this.lblAddressLine1.Size = new System.Drawing.Size(96, 16);
             this.lblAddressLine1.TabIndex = 38;

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Course.cs" />
     <Compile Include="CourseRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -51,6 +52,12 @@
       <DependentUpon>CourseRegistration.cs</DependentUpon>
     </Compile>
     <Compile Include="Faculty.cs" />
+    <Compile Include="frmMaintainCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaintainCourse.Designer.cs">
+      <DependentUpon>frmMaintainCourse.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +75,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CourseRegistration.resx">
       <DependentUpon>CourseRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaintainCourse.resx">
+      <DependentUpon>frmMaintainCourse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>

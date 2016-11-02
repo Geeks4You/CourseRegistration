@@ -103,18 +103,18 @@
             this.filePrintToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("filePrintToolStripMenuItem.Image")));
             this.filePrintToolStripMenuItem.Name = "filePrintToolStripMenuItem";
             this.filePrintToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.filePrintToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.filePrintToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.filePrintToolStripMenuItem.Text = "&Print...";
             // 
             // fileSep1ToolStripMenuItem
             // 
             this.fileSep1ToolStripMenuItem.Name = "fileSep1ToolStripMenuItem";
-            this.fileSep1ToolStripMenuItem.Size = new System.Drawing.Size(149, 6);
+            this.fileSep1ToolStripMenuItem.Size = new System.Drawing.Size(146, 6);
             // 
             // fileExitToolStripMenuItem
             // 
             this.fileExitToolStripMenuItem.Name = "fileExitToolStripMenuItem";
-            this.fileExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileExitToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.fileExitToolStripMenuItem.Text = "E&xit";
             this.fileExitToolStripMenuItem.Click += new System.EventHandler(this.fileExitToolStripMenuItem_Click);
             // 
@@ -261,14 +261,14 @@
             // 
             this.studentsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("studentsToolStripMenuItem.Image")));
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.studentsToolStripMenuItem.Text = "Students...";
             // 
             // facultyToolStripMenuItem
             // 
             this.facultyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("facultyToolStripMenuItem.Image")));
             this.facultyToolStripMenuItem.Name = "facultyToolStripMenuItem";
-            this.facultyToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.facultyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.facultyToolStripMenuItem.Text = "Faculty...";
             this.facultyToolStripMenuItem.Click += new System.EventHandler(this.facultyToolStripMenuItem_Click);
             // 
@@ -276,19 +276,20 @@
             // 
             this.coursesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("coursesToolStripMenuItem.Image")));
             this.coursesToolStripMenuItem.Name = "coursesToolStripMenuItem";
-            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.coursesToolStripMenuItem.Text = "Courses...";
+            this.coursesToolStripMenuItem.Click += new System.EventHandler(this.coursesToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
             // 
             // registrationToolStripMenuItem
             // 
             this.registrationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("registrationToolStripMenuItem.Image")));
             this.registrationToolStripMenuItem.Name = "registrationToolStripMenuItem";
-            this.registrationToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.registrationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.registrationToolStripMenuItem.Text = "Registration...";
             // 
             // helpToolStripMenuItem

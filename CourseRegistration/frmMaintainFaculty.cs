@@ -34,7 +34,6 @@ namespace CourseRegistration
             cboState.SelectedIndex = -1;
             mtbZip.Text = String.Empty;
             mtbPhone.Text = String.Empty;
-            txtEmail.Text = String.Empty;
         }
 
         private Boolean ValidInput()
