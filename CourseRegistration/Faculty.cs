@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CourseRegistration
 {
-    class Faculty
+    public class Faculty
     {
-        Int32 _ID;
-        public Int32 ID
+        Int16 _ID;
+        public Int16 ID
         {
             get { return _ID; }
             set { _ID = value; }

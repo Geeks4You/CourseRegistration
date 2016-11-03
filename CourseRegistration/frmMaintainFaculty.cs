@@ -12,30 +12,129 @@ namespace CourseRegistration
 {
     public partial class frmMaintainFaculty : Form
     {
+        #region Constructors
         public frmMaintainFaculty()
         {
             InitializeComponent();
         }
+        #endregion Constructors
 
+        #region Event Handlers
         private void frmMaintainFaculty_Load(object sender, EventArgs e)
         {
             Globals.LoadStates(cboState);
             LoadFacultyFromFile();
+            this.WindowState = FormWindowState.Maximized;
         }
+        private void cmdNew_Click(object sender, EventArgs e)
+        {   //Set up the form and to receive data for a new client
+            lstFaculty.SelectedIndex = -1;
+            cmdNew.Enabled = false;
 
+            ClearForm();
+            txtFirstName.Focus();
+        }
+        private void cmdSave_Click(object sender, EventArgs e)
+        {   //User clicked Save, so validate the fields and save the Client in the client store if good data
+            if (ValidInput())
+            {
+                SaveFaculty();
+                SaveFacultyToFile();
+                cmdNew.Enabled = true;
+                cmdSave.Enabled = false;
+            }
+        }
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+            cmdSave.Enabled = true;
+        }
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+            cmdSave.Enabled = true;
+        }
+        private void txtProgram_TextChanged(object sender, EventArgs e)
+        {
+            cmdSave.Enabled = true;
+        }
+        private void txtAddressLine1_TextChanged(object sender, EventArgs e)
+        {
+            cmdSave.Enabled = true;
+        }
+        private void txtAddressLine2_TextChanged(object sender, EventArgs e)
+        {
+            cmdSave.Enabled = true;
+        }
+        private void txtCity_TextChanged(object sender, EventArgs e)
+        {
+            cmdSave.Enabled = true;
+        }
+        private void cboState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmdSave.Enabled = true;
+        }
+        private void mtbZip_TextChanged(object sender, EventArgs e)
+        {
+            cmdSave.Enabled = true;
+        }
+        private void mtbPhone_TextChanged(object sender, EventArgs e)
+        {
+            cmdSave.Enabled = true;
+        }
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            cmdSave.Enabled = true;
+        }
+        private void cmdDelete_Click(object sender, EventArgs e)
+        {   //Delete the client from the ListBox
+            if (MessageBox.Show("Are you sure you want to delete this Faculty member?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes))
+            {
+                lstFaculty.Items.Remove(lstFaculty.SelectedItem);
+                ClearForm();
+                SaveFacultyToFile();
+            }
+        }
+        private void lstFaculty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((lstFaculty.SelectedIndex > -1))
+            {
+                // When the user clicks on an existing user, populate the form from the faculty store
+                Faculty faculty = FindFaculty(Convert.ToInt16(lstFaculty.SelectedIndex));
+                PopulateFormFromFaculty(faculty);
+                cmdDelete.Enabled = true;
+            }
+            else
+            {
+                // Nothing was selected, so clear the form
+                ClearForm();
+                cmdDelete.Enabled = false;
+                cmdSave.Enabled = false;
+            }
+        }
+        private void cmdHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Sorry, but Help is not available yet.", "Help Clicked", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+        private void cmdClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion Event Handlers
+
+        #region Helper Functions
         private void ClearForm()
         {   //Clear out all the fields on the form
             txtFirstName.Text = String.Empty;
             txtLastName.Text = String.Empty;
-            txtProgram.Text = String.Empty;
+            cboProgram.Text = String.Empty;
             txtAddressLine1.Text = String.Empty;
             txtAddressLine2.Text = String.Empty;
             txtCity.Text = String.Empty;
             cboState.SelectedIndex = -1;
             mtbZip.Text = String.Empty;
             mtbPhone.Text = String.Empty;
+            txtEmail.Text = String.Empty;
+            txtID.Text = String.Empty;
         }
-
         private Boolean ValidInput()
         {   //The only requirement is a first name, last name and state selection at this point in time
             if (txtFirstName.Text.Equals(String.Empty))
@@ -56,13 +155,16 @@ namespace CourseRegistration
 
             return true;
         }
-
         private void SaveFaculty()
         {   //Format a Faculty object and save it in the ListBox
             Faculty faculty = new Faculty();
+            if (lstFaculty.SelectedIndex > -1)
+            {
+                faculty = (Faculty) lstFaculty.Items[lstFaculty.SelectedIndex];
+            }
             faculty.FirstName = txtFirstName.Text;
             faculty.LastName = txtLastName.Text;
-            faculty.Program = txtProgram.Text;
+            faculty.Program = cboProgram.Text;
             faculty.AddressLine1 = txtAddressLine1.Text;
             faculty.AddressLine2 = txtAddressLine2.Text;
             faculty.City = txtCity.Text;
@@ -73,115 +175,34 @@ namespace CourseRegistration
 
             if (lstFaculty.SelectedIndex > -1)
             {
-                faculty.ID = -1;
                 lstFaculty.Items[lstFaculty.SelectedIndex] = faculty;
             }
             else
             {
-                faculty.ID = lstFaculty.Items.Count + 1;
+                faculty.ID = GetNextID();
                 lstFaculty.Items.Add(faculty);
             }
         }
+        private Int16 GetNextID()
+        {
+            Int16 nID = -1;
 
-        private void cmdNew_Click(object sender, EventArgs e)
-        {   //Set up the form and to receive data for a new client
-            lstFaculty.SelectedIndex = -1;
-            cmdNew.Enabled = false;
-
-            ClearForm();
-            txtFirstName.Focus();
-        }
-
-        private void cmdSave_Click(object sender, EventArgs e)
-        {   //User clicked Save, so validate the fields and save the Client in the client store if good data
-            if (ValidInput())
+            String line;
+            System.IO.StreamReader file = new System.IO.StreamReader("Faculty.csv");
+            while ((line = file.ReadLine()) != null)
             {
-                SaveFaculty();
-                SaveFacultyToFile();
-                cmdNew.Enabled = true;
-                cmdSave.Enabled = false;
+                String[] szColumn = line.Split(',');
+                if (Convert.ToInt16(szColumn[0]) > nID)
+                {
+                    nID = Convert.ToInt16(szColumn[0]);
+                }
             }
+            file.Close();
+            
+            nID++;
+            return nID;
         }
-
-        private void txtFirstName_TextChanged(object sender, EventArgs e)
-        {
-            cmdSave.Enabled = true;
-        }
-
-        private void txtLastName_TextChanged(object sender, EventArgs e)
-        {
-            cmdSave.Enabled = true;
-        }
-
-        private void txtProgram_TextChanged(object sender, EventArgs e)
-        {
-            cmdSave.Enabled = true;
-        }
-
-        private void txtAddressLine1_TextChanged(object sender, EventArgs e)
-        {
-            cmdSave.Enabled = true;
-        }
-
-        private void txtAddressLine2_TextChanged(object sender, EventArgs e)
-        {
-            cmdSave.Enabled = true;
-        }
-
-        private void txtCity_TextChanged(object sender, EventArgs e)
-        {
-            cmdSave.Enabled = true;
-        }
-
-        private void cboState_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cmdSave.Enabled = true;
-        }
-
-        private void mtbZip_TextChanged(object sender, EventArgs e)
-        {
-            cmdSave.Enabled = true;
-        }
-
-        private void mtbPhone_TextChanged(object sender, EventArgs e)
-        {
-            cmdSave.Enabled = true;
-        }
-
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-            cmdSave.Enabled = true;
-        }
-
-        private void cmdDelete_Click(object sender, EventArgs e)
-        {   //Delete the client from the ListBox
-            if (MessageBox.Show("Are you sure you want to delete this Faculty member?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes))
-            {
-                lstFaculty.Items.Remove(lstFaculty.SelectedItem);
-                ClearForm();
-                SaveFacultyToFile();
-            }
-        }
-
-        private void lstFaculty_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if ((lstFaculty.SelectedIndex > -1))
-            {
-                // When the user clicks on an existing user, populate the form from the faculty store
-                Faculty faculty = FindFaculty(lstFaculty.SelectedIndex);
-                PopulateFormFromFaculty(faculty);
-                cmdDelete.Enabled = true;
-            }
-            else
-            {
-                // Nothing was selected, so clear the form
-                ClearForm();
-                cmdDelete.Enabled = false;
-                cmdSave.Enabled = false;
-            }
-        }
-
-        private Faculty FindFaculty(Int32 nIndex)
+        private Faculty FindFaculty(Int16 nIndex)
         {   //Locate a Faculty object in the ListBox Faculty store
             Faculty faculty = new Faculty();
 
@@ -189,12 +210,11 @@ namespace CourseRegistration
 
             return faculty;
         }
-
         private void PopulateFormFromFaculty(Faculty faculty)
         {   // Populate the fields from the Faculty object
             txtFirstName.Text = faculty.FirstName;
             txtLastName.Text = faculty.LastName;
-            txtProgram.Text = faculty.Program;
+            cboProgram.Text = faculty.Program;
             txtAddressLine1.Text = faculty.AddressLine1;
             txtAddressLine2.Text = faculty.AddressLine2;
             txtCity.Text = faculty.City;
@@ -211,11 +231,10 @@ namespace CourseRegistration
             mtbZip.Text = faculty.Zip;
             mtbPhone.Text = faculty.Phone;
             txtEmail.Text = faculty.Email;
+            txtID.Text = faculty.ID.ToString();
         }
-
         private void LoadFacultyFromFile()
         {
-
             String line;
             System.IO.StreamReader file = new System.IO.StreamReader("Faculty.csv");
             while ((line = file.ReadLine()) != null)
@@ -237,7 +256,6 @@ namespace CourseRegistration
             }
             file.Close();
         }
-
         private void SaveFacultyToFile()
         {
             using (System.IO.StreamWriter file = new System.IO.StreamWriter("Faculty.csv"))
@@ -261,15 +279,7 @@ namespace CourseRegistration
                 }
             }        
         }
+        #endregion Helper Functions
 
-        private void cmdHelp_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Sorry, but Help is not available yet.", "Help Clicked", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
-
-        private void cmdClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
     }
 }

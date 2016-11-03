@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,6 +70,64 @@ namespace CourseRegistration
             cboStates.Items.Add("WV");
             cboStates.Items.Add("WI");
             cboStates.Items.Add("WY");
+        }
+
+        public static Faculty FindFaculty(Int16 FacultyID)
+        {
+            Faculty faculty = null;
+
+            String FacultyLine;
+            System.IO.StreamReader FacultyFile = new System.IO.StreamReader("Faculty.csv");
+            while ((FacultyLine = FacultyFile.ReadLine()) != null)
+            {
+                String[] szColumn = FacultyLine.Split(',');
+                if (szColumn.Length == 11)
+                {
+                    if (Convert.ToInt16(szColumn[0]).Equals(FacultyID))
+                    {
+                        faculty = new Faculty();
+                        faculty.ID = Convert.ToInt16(szColumn[0]);
+                        faculty.FirstName = szColumn[1];
+                        faculty.LastName = szColumn[2];
+                        faculty.Program = szColumn[3];
+                        faculty.AddressLine1 = szColumn[4];
+                        faculty.AddressLine2 = szColumn[5];
+                        faculty.City = szColumn[6];
+                        faculty.State = szColumn[7];
+                        faculty.Zip = szColumn[8];
+                        faculty.Phone = szColumn[9];
+                        faculty.Email = szColumn[10];
+                    }
+                }
+            }
+            FacultyFile.Close();
+
+            return faculty;
+        }
+
+        public static ArrayList GetRelatedFacultyForCourse(Int16 CourseID)
+        {
+            ArrayList alFaculty = new ArrayList();
+            String CourseFacultyLine;
+            System.IO.StreamReader CourseFacultyFile = new System.IO.StreamReader("CourseFaculty.csv");
+            while ((CourseFacultyLine = CourseFacultyFile.ReadLine()) != null)
+            {
+                String[] szColumn = CourseFacultyLine.Split(',');
+                if (szColumn.Length == 2)
+                {
+                    if (Convert.ToInt16(szColumn[0]).Equals(CourseID))
+                    {
+                        Faculty faculty = FindFaculty(Convert.ToInt16(szColumn[1]));
+                        if (faculty != null)
+                        {
+                            alFaculty.Add(faculty);
+                        }
+                    }
+                }
+            }
+            CourseFacultyFile.Close();
+
+            return alFaculty;
         }
     }
 }
