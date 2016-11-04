@@ -66,11 +66,11 @@ namespace CourseRegistration
             fMaintainCourse.Show();
         }
 
-        private void studentToolStripMenuItem_Click(object sender, EventArgs e)
+        private void studentsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            frmMaintainStudents fMaintainStudent = new frmMaintainStudents();
-            fMaintainStudent.MdiParent = this;
-            fMaintainStudent.Show();
+            frmMaintainStudents fMaintainStudents = new frmMaintainStudents();
+            fMaintainStudents.MdiParent = this;
+            fMaintainStudents.Show();
         }
 
         private void registrationToolStripMenuItem_Click(object sender, EventArgs e)
