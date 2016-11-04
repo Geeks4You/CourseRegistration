@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CourseRegistration
 {
-    class Course
+    public class Course
     {
         Int16 _ID;
         public Int16 ID

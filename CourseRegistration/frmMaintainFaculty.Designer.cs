@@ -62,7 +62,7 @@
             // 
             // cmdNew
             // 
-            this.cmdNew.Location = new System.Drawing.Point(133, 324);
+            this.cmdNew.Location = new System.Drawing.Point(239, 324);
             this.cmdNew.Name = "cmdNew";
             this.cmdNew.Size = new System.Drawing.Size(75, 23);
             this.cmdNew.TabIndex = 12;
@@ -83,14 +83,14 @@
             this.lstFaculty.FormattingEnabled = true;
             this.lstFaculty.Location = new System.Drawing.Point(29, 53);
             this.lstFaculty.Name = "lstFaculty";
-            this.lstFaculty.Size = new System.Drawing.Size(227, 251);
+            this.lstFaculty.Size = new System.Drawing.Size(192, 290);
             this.lstFaculty.TabIndex = 1;
             this.lstFaculty.SelectedIndexChanged += new System.EventHandler(this.lstFaculty_SelectedIndexChanged);
             // 
             // cmdSave
             // 
             this.cmdSave.Enabled = false;
-            this.cmdSave.Location = new System.Drawing.Point(218, 324);
+            this.cmdSave.Location = new System.Drawing.Point(324, 324);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(75, 23);
             this.cmdSave.TabIndex = 13;
@@ -100,7 +100,7 @@
             // 
             // cmdClose
             // 
-            this.cmdClose.Location = new System.Drawing.Point(461, 324);
+            this.cmdClose.Location = new System.Drawing.Point(567, 324);
             this.cmdClose.Name = "cmdClose";
             this.cmdClose.Size = new System.Drawing.Size(75, 23);
             this.cmdClose.TabIndex = 16;
@@ -110,7 +110,7 @@
             // 
             // cmdHelp
             // 
-            this.cmdHelp.Location = new System.Drawing.Point(380, 324);
+            this.cmdHelp.Location = new System.Drawing.Point(486, 324);
             this.cmdHelp.Name = "cmdHelp";
             this.cmdHelp.Size = new System.Drawing.Size(75, 23);
             this.cmdHelp.TabIndex = 15;
@@ -121,7 +121,7 @@
             // cmdDelete
             // 
             this.cmdDelete.Enabled = false;
-            this.cmdDelete.Location = new System.Drawing.Point(299, 324);
+            this.cmdDelete.Location = new System.Drawing.Point(405, 324);
             this.cmdDelete.Name = "cmdDelete";
             this.cmdDelete.Size = new System.Drawing.Size(75, 23);
             this.cmdDelete.TabIndex = 14;
@@ -131,7 +131,7 @@
             // 
             // mtbPhone
             // 
-            this.mtbPhone.Location = new System.Drawing.Point(367, 231);
+            this.mtbPhone.Location = new System.Drawing.Point(346, 231);
             this.mtbPhone.Mask = "(999)000-0000";
             this.mtbPhone.Name = "mtbPhone";
             this.mtbPhone.Size = new System.Drawing.Size(128, 20);
@@ -140,7 +140,7 @@
             // 
             // mtbZip
             // 
-            this.mtbZip.Location = new System.Drawing.Point(367, 209);
+            this.mtbZip.Location = new System.Drawing.Point(346, 209);
             this.mtbZip.Mask = "00000-9999";
             this.mtbZip.Name = "mtbZip";
             this.mtbZip.Size = new System.Drawing.Size(128, 20);
@@ -151,7 +151,7 @@
             // 
             this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboState.FormattingEnabled = true;
-            this.cboState.Location = new System.Drawing.Point(367, 187);
+            this.cboState.Location = new System.Drawing.Point(346, 187);
             this.cboState.Name = "cboState";
             this.cboState.Size = new System.Drawing.Size(128, 21);
             this.cboState.TabIndex = 8;
@@ -159,7 +159,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(367, 253);
+            this.txtEmail.Location = new System.Drawing.Point(346, 253);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(256, 20);
             this.txtEmail.TabIndex = 11;
@@ -167,7 +167,7 @@
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(367, 165);
+            this.txtCity.Location = new System.Drawing.Point(346, 165);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(128, 20);
             this.txtCity.TabIndex = 7;
@@ -175,7 +175,7 @@
             // 
             // txtAddressLine2
             // 
-            this.txtAddressLine2.Location = new System.Drawing.Point(367, 143);
+            this.txtAddressLine2.Location = new System.Drawing.Point(346, 143);
             this.txtAddressLine2.Name = "txtAddressLine2";
             this.txtAddressLine2.Size = new System.Drawing.Size(128, 20);
             this.txtAddressLine2.TabIndex = 6;
@@ -183,7 +183,7 @@
             // 
             // txtAddressLine1
             // 
-            this.txtAddressLine1.Location = new System.Drawing.Point(367, 121);
+            this.txtAddressLine1.Location = new System.Drawing.Point(346, 121);
             this.txtAddressLine1.Name = "txtAddressLine1";
             this.txtAddressLine1.Size = new System.Drawing.Size(128, 20);
             this.txtAddressLine1.TabIndex = 5;
@@ -191,7 +191,7 @@
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(367, 77);
+            this.txtLastName.Location = new System.Drawing.Point(346, 77);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(128, 20);
             this.txtLastName.TabIndex = 3;
@@ -199,7 +199,7 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(367, 55);
+            this.txtFirstName.Location = new System.Drawing.Point(346, 55);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(128, 20);
             this.txtFirstName.TabIndex = 2;
@@ -207,7 +207,7 @@
             // 
             // lblEmail
             // 
-            this.lblEmail.Location = new System.Drawing.Point(265, 253);
+            this.lblEmail.Location = new System.Drawing.Point(244, 253);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(96, 16);
             this.lblEmail.TabIndex = 53;
@@ -216,7 +216,7 @@
             // 
             // lblProgram
             // 
-            this.lblProgram.Location = new System.Drawing.Point(259, 99);
+            this.lblProgram.Location = new System.Drawing.Point(238, 99);
             this.lblProgram.Name = "lblProgram";
             this.lblProgram.Size = new System.Drawing.Size(96, 16);
             this.lblProgram.TabIndex = 50;
@@ -225,7 +225,7 @@
             // 
             // lblPhone
             // 
-            this.lblPhone.Location = new System.Drawing.Point(265, 231);
+            this.lblPhone.Location = new System.Drawing.Point(244, 231);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(96, 16);
             this.lblPhone.TabIndex = 49;
@@ -234,7 +234,7 @@
             // 
             // lblZip
             // 
-            this.lblZip.Location = new System.Drawing.Point(265, 209);
+            this.lblZip.Location = new System.Drawing.Point(244, 209);
             this.lblZip.Name = "lblZip";
             this.lblZip.Size = new System.Drawing.Size(96, 16);
             this.lblZip.TabIndex = 47;
@@ -243,7 +243,7 @@
             // 
             // lblState
             // 
-            this.lblState.Location = new System.Drawing.Point(265, 187);
+            this.lblState.Location = new System.Drawing.Point(244, 187);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(96, 16);
             this.lblState.TabIndex = 45;
@@ -252,7 +252,7 @@
             // 
             // lblCity
             // 
-            this.lblCity.Location = new System.Drawing.Point(265, 165);
+            this.lblCity.Location = new System.Drawing.Point(244, 165);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(96, 16);
             this.lblCity.TabIndex = 43;
@@ -261,7 +261,7 @@
             // 
             // lblAddressLine2
             // 
-            this.lblAddressLine2.Location = new System.Drawing.Point(265, 143);
+            this.lblAddressLine2.Location = new System.Drawing.Point(244, 143);
             this.lblAddressLine2.Name = "lblAddressLine2";
             this.lblAddressLine2.Size = new System.Drawing.Size(96, 16);
             this.lblAddressLine2.TabIndex = 40;
@@ -270,7 +270,7 @@
             // 
             // lblAddressLine1
             // 
-            this.lblAddressLine1.Location = new System.Drawing.Point(265, 121);
+            this.lblAddressLine1.Location = new System.Drawing.Point(244, 121);
             this.lblAddressLine1.Name = "lblAddressLine1";
             this.lblAddressLine1.Size = new System.Drawing.Size(96, 16);
             this.lblAddressLine1.TabIndex = 38;
@@ -279,7 +279,7 @@
             // 
             // lblLastName
             // 
-            this.lblLastName.Location = new System.Drawing.Point(262, 77);
+            this.lblLastName.Location = new System.Drawing.Point(241, 77);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(96, 16);
             this.lblLastName.TabIndex = 35;
@@ -288,7 +288,7 @@
             // 
             // lblFirstName
             // 
-            this.lblFirstName.Location = new System.Drawing.Point(262, 55);
+            this.lblFirstName.Location = new System.Drawing.Point(241, 55);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(96, 16);
             this.lblFirstName.TabIndex = 32;
@@ -297,7 +297,7 @@
             // 
             // lblID
             // 
-            this.lblID.Location = new System.Drawing.Point(265, 275);
+            this.lblID.Location = new System.Drawing.Point(244, 275);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(96, 16);
             this.lblID.TabIndex = 61;
@@ -307,7 +307,7 @@
             // txtID
             // 
             this.txtID.BackColor = System.Drawing.Color.Silver;
-            this.txtID.Location = new System.Drawing.Point(367, 275);
+            this.txtID.Location = new System.Drawing.Point(346, 275);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(127, 20);
@@ -323,7 +323,7 @@
             "Humanities & Science",
             "Mathmatics & Science",
             "Technology & Cyber Security"});
-            this.cboProgram.Location = new System.Drawing.Point(367, 99);
+            this.cboProgram.Location = new System.Drawing.Point(346, 99);
             this.cboProgram.Name = "cboProgram";
             this.cboProgram.Size = new System.Drawing.Size(256, 21);
             this.cboProgram.TabIndex = 64;

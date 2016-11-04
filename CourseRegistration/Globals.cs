@@ -4,12 +4,13 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CourseRegistration
 {
     public static class Globals
     {
-        public static void LoadStates(System.Windows.Forms.ComboBox cboStates)
+        public static void LoadStates(ComboBox cboStates)
         {   //Loado the state abbreviations into the combo box
             cboStates.Items.Add("AL");
             cboStates.Items.Add("AK");
@@ -128,6 +129,147 @@ namespace CourseRegistration
             CourseFacultyFile.Close();
 
             return alFaculty;
+        }
+
+        public static void LoadStudents(ComboBox cboStudents)
+        {
+            String StudentLine;
+            System.IO.StreamReader StudentFile = new System.IO.StreamReader("Student.csv");
+            while ((StudentLine = StudentFile.ReadLine()) != null)
+            {
+                String[] szColumn = StudentLine.Split(',');
+                if (szColumn.Length == 11)
+                {
+                    Student student = new Student();
+                    student.ID = Convert.ToInt16(szColumn[0]);
+                    student.FirstName = szColumn[1];
+                    student.LastName = szColumn[2];
+                    student.Program = szColumn[3];
+                    student.AddressLine1 = szColumn[4];
+                    student.AddressLine2 = szColumn[5];
+                    student.City = szColumn[6];
+                    student.State = szColumn[7];
+                    student.Zip = szColumn[8];
+                    student.Phone = szColumn[9];
+                    student.Email = szColumn[10];
+                    cboStudents.Items.Add(student);
+                }
+            }
+            StudentFile.Close();
+        }
+
+        public static void LoadFaculty(ComboBox cboFaculty)
+        {
+            String FacultyLine;
+            System.IO.StreamReader FacultyFile = new System.IO.StreamReader("Faculty.csv");
+            while ((FacultyLine = FacultyFile.ReadLine()) != null)
+            {
+                String[] szColumn = FacultyLine.Split(',');
+                if (szColumn.Length == 11)
+                {
+                    Faculty faculty = new Faculty();
+                    faculty.ID = Convert.ToInt16(szColumn[0]);
+                    faculty.FirstName = szColumn[1];
+                    faculty.LastName = szColumn[2];
+                    faculty.Program = szColumn[3];
+                    faculty.AddressLine1 = szColumn[4];
+                    faculty.AddressLine2 = szColumn[5];
+                    faculty.City = szColumn[6];
+                    faculty.State = szColumn[7];
+                    faculty.Zip = szColumn[8];
+                    faculty.Phone = szColumn[9];
+                    faculty.Email = szColumn[10];
+                    cboFaculty.Items.Add(faculty);
+                }
+            }
+            FacultyFile.Close();
+        }
+
+        public static void LoadCourses(ComboBox cboCourses)
+        {
+            String CourseLine;
+            System.IO.StreamReader CourseFile = new System.IO.StreamReader("Course.csv");
+            while ((CourseLine = CourseFile.ReadLine()) != null)
+            {
+                String[] szColumn = CourseLine.Split(',');
+                if (szColumn.Length == 7)
+                {
+                    Course course = new Course();
+                    course.ID = Convert.ToInt16(szColumn[0]);
+                    course.CourseNumber = szColumn[1];
+                    course.CourseDescription = szColumn[2];
+                    course.StartDate = szColumn[3];
+                    course.EndDate = szColumn[4];
+                    course.Location = szColumn[5];
+                    course.Credits = szColumn[6];
+                    cboCourses.Items.Add(course);
+                }
+            }
+            CourseFile.Close();
+        }
+
+        public static Course GetCourse(Int16 CourseID)
+        {
+            Course course = null;
+
+            String CourseLine;
+            System.IO.StreamReader CourseFile = new System.IO.StreamReader("Course.csv");
+            while ((CourseLine = CourseFile.ReadLine()) != null)
+            {
+                String[] szColumn = CourseLine.Split(',');
+                if (szColumn.Length == 7)
+                {
+                    if (Convert.ToInt16(szColumn[0]).Equals(CourseID))
+                    {
+                        course = new Course();
+                        course.ID = Convert.ToInt16(szColumn[0]);
+                        course.CourseNumber = szColumn[1];
+                        course.CourseDescription = szColumn[2];
+                        course.StartDate = szColumn[3];
+                        course.EndDate = szColumn[4];
+                        course.Location = szColumn[5];
+                        course.Credits = szColumn[6];
+                    }
+                }
+            }
+            CourseFile.Close();
+
+            return course;
+        }
+
+        public static void DeleteRegistration(Int16 StudentID, Int16 CourseID)
+        {
+            ArrayList alOutput = new ArrayList();
+
+            String RegistrationLine;
+            System.IO.StreamReader RegistrationFile = new System.IO.StreamReader("Registration.csv");
+            while ((RegistrationLine = RegistrationFile.ReadLine()) != null)
+            {
+                String[] szColumn = RegistrationLine.Split(',');
+                if (szColumn.Length == 2)
+                {
+                    Registration registration = new Registration();
+                    registration.StudentID = Convert.ToInt16(szColumn[0]);
+                    registration.CourseID = Convert.ToInt16(szColumn[1]);
+                    if ((registration.StudentID.Equals(StudentID)) && (registration.CourseID.Equals(CourseID)))
+                    {
+                    }
+                    else
+                    {
+                        alOutput.Add(RegistrationLine);
+                    }
+                }
+            }
+            RegistrationFile.Close();
+
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter("Registration.csv", false))
+            {
+                foreach (String s in alOutput)
+                {
+                    file.WriteLine(s);
+                }
+                file.Close();
+            }
         }
     }
 }

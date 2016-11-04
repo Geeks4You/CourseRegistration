@@ -60,11 +60,11 @@ namespace CourseRegistration
         {
             cmdSave.Enabled = true;
         }
-        private void cboLocation_TextChanged(object sender, EventArgs e)
+        private void txtLocation_TextChanged(object sender, EventArgs e)
         {
             cmdSave.Enabled = true;
         }
-        private void cboCredits_TextChanged(object sender, EventArgs e)
+        private void txtCredits_TextChanged(object sender, EventArgs e)
         {
             cmdSave.Enabled = true;
         }
@@ -85,7 +85,7 @@ namespace CourseRegistration
         {
             if ((lstCourse.SelectedIndex > -1))
             {
-                // When the user clicks on an existing course, populate the form from the course store
+                // When the user clicks on an existing user, populate the form from the course store
                 Course course = FindCourse(Convert.ToInt16(lstCourse.SelectedIndex));
                 PopulateFormFromCourse(course);
                 LoadRelatedFaculty();
@@ -135,16 +135,6 @@ namespace CourseRegistration
             if (dtpEndDate.Text.Equals(String.Empty))
             {
                 System.Windows.Forms.MessageBox.Show("You must provide a end date.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (cboLocation.Text.Equals(String.Empty))
-            {
-                System.Windows.Forms.MessageBox.Show("You must select a location.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (cboCredits.Text.Equals(String.Empty))
-            {
-                System.Windows.Forms.MessageBox.Show("You must provide number of credits.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -282,11 +272,5 @@ namespace CourseRegistration
             }
         }
         #endregion Helper Functions
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
     }
 }

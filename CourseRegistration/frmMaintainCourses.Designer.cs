@@ -62,7 +62,7 @@
             // 
             // cmdNew
             // 
-            this.cmdNew.Location = new System.Drawing.Point(137, 337);
+            this.cmdNew.Location = new System.Drawing.Point(256, 311);
             this.cmdNew.Name = "cmdNew";
             this.cmdNew.Size = new System.Drawing.Size(75, 23);
             this.cmdNew.TabIndex = 72;
@@ -83,14 +83,14 @@
             this.lstCourse.FormattingEnabled = true;
             this.lstCourse.Location = new System.Drawing.Point(38, 40);
             this.lstCourse.Name = "lstCourse";
-            this.lstCourse.Size = new System.Drawing.Size(202, 251);
+            this.lstCourse.Size = new System.Drawing.Size(202, 290);
             this.lstCourse.TabIndex = 61;
             this.lstCourse.SelectedIndexChanged += new System.EventHandler(this.lstCourse_SelectedIndexChanged);
             // 
             // cmdSave
             // 
             this.cmdSave.Enabled = false;
-            this.cmdSave.Location = new System.Drawing.Point(222, 337);
+            this.cmdSave.Location = new System.Drawing.Point(341, 311);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(75, 23);
             this.cmdSave.TabIndex = 73;
@@ -100,7 +100,7 @@
             // 
             // cmdClose
             // 
-            this.cmdClose.Location = new System.Drawing.Point(465, 337);
+            this.cmdClose.Location = new System.Drawing.Point(584, 311);
             this.cmdClose.Name = "cmdClose";
             this.cmdClose.Size = new System.Drawing.Size(75, 23);
             this.cmdClose.TabIndex = 76;
@@ -110,7 +110,7 @@
             // 
             // cmdHelp
             // 
-            this.cmdHelp.Location = new System.Drawing.Point(384, 337);
+            this.cmdHelp.Location = new System.Drawing.Point(503, 311);
             this.cmdHelp.Name = "cmdHelp";
             this.cmdHelp.Size = new System.Drawing.Size(75, 23);
             this.cmdHelp.TabIndex = 75;
@@ -121,7 +121,7 @@
             // cmdDelete
             // 
             this.cmdDelete.Enabled = false;
-            this.cmdDelete.Location = new System.Drawing.Point(303, 337);
+            this.cmdDelete.Location = new System.Drawing.Point(422, 311);
             this.cmdDelete.Name = "cmdDelete";
             this.cmdDelete.Size = new System.Drawing.Size(75, 23);
             this.cmdDelete.TabIndex = 74;
@@ -289,14 +289,13 @@
             this.splitContainer1.Panel1.Controls.Add(this.cmdClose);
             this.splitContainer1.Panel1.Controls.Add(this.cmdSave);
             this.splitContainer1.Panel1.Controls.Add(this.lstCourse);
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer1.Panel2.Controls.Add(this.lblCourseFaculty);
             this.splitContainer1.Size = new System.Drawing.Size(682, 604);
-            this.splitContainer1.SplitterDistance = 404;
+            this.splitContainer1.SplitterDistance = 448;
             this.splitContainer1.TabIndex = 101;
             // 
             // dataGridView1
@@ -305,7 +304,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 16);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(682, 180);
+            this.dataGridView1.Size = new System.Drawing.Size(682, 136);
             this.dataGridView1.TabIndex = 1;
             // 
             // lblCourseFaculty

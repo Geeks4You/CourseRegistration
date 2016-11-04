@@ -66,19 +66,18 @@ namespace CourseRegistration
             fMaintainCourse.Show();
         }
 
-        //private void studentToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    frmMaintainStudents fMaintainStudent = new frmMaintainStudents();
-        //    fMaintainStudent.MdiParent = this;
-        //    fMaintainStudent.Show();
-            
-        //}
+        private void studentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMaintainStudents fMaintainStudent = new frmMaintainStudents();
+            fMaintainStudent.MdiParent = this;
+            fMaintainStudent.Show();
+        }
 
         private void registrationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRegistration fRegistrationMenu = new frmRegistration();
-            fRegistrationMenu.MdiParent = this;
-            fRegistrationMenu.Show();
+            frmRegistration fRegistration = new frmRegistration();
+            fRegistration.MdiParent = this;
+            fRegistration.Show();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -90,13 +89,6 @@ namespace CourseRegistration
         private void fileExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmMaintainStudents fMaintainStudent = new frmMaintainStudents();
-            fMaintainStudent.MdiParent = this;
-            fMaintainStudent.Show();
         }
 
     }

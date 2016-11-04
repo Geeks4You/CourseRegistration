@@ -86,6 +86,8 @@
     <Compile Include="frmMaintainStudents.Designer.cs">
       <DependentUpon>frmMaintainStudents.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registration.cs" />
+    <Compile Include="Student.cs" />
     <EmbeddedResource Include="CourseRegistration.resx">
       <DependentUpon>CourseRegistration.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +127,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Registration.csv" />
+    <None Include="Student.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
