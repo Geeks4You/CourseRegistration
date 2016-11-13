@@ -71,6 +71,24 @@
     <Compile Include="frmMaintainFaculty.Designer.cs">
       <DependentUpon>frmMaintainFaculty.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMaintainStudents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaintainStudents.Designer.cs">
+      <DependentUpon>frmMaintainStudents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelectFaculty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectFaculty.Designer.cs">
+      <DependentUpon>frmSelectFaculty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplash.Designer.cs">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,12 +97,6 @@
     </Compile>
     <Compile Include="frmRegistration.Designer.cs">
       <DependentUpon>frmRegistration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMaintainStudents.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMaintainStudents.Designer.cs">
-      <DependentUpon>frmMaintainStudents.cs</DependentUpon>
     </Compile>
     <Compile Include="Registration.cs" />
     <Compile Include="Student.cs" />
@@ -100,6 +112,15 @@
     <EmbeddedResource Include="frmMaintainFaculty.resx">
       <DependentUpon>frmMaintainFaculty.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMaintainStudents.resx">
+      <DependentUpon>frmMaintainStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectFaculty.resx">
+      <DependentUpon>frmSelectFaculty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplash.resx">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -111,9 +132,6 @@
     </Compile>
     <EmbeddedResource Include="frmRegistration.resx">
       <DependentUpon>frmRegistration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMaintainStudents.resx">
-      <DependentUpon>frmMaintainStudents.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Course.csv" />
     <None Include="CourseFaculty.csv" />
@@ -144,8 +162,10 @@
     <Content Include="MenuIcons\faculty.ico" />
     <Content Include="MenuIcons\file_print.bmp" />
     <Content Include="MenuIcons\help.ico" />
+    <Content Include="MenuIcons\James_Madison_University.jpeg" />
     <Content Include="MenuIcons\paste.bmp" />
     <Content Include="MenuIcons\registration.ICO" />
+    <Content Include="MenuIcons\Splash.jpg" />
     <Content Include="MenuIcons\student.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

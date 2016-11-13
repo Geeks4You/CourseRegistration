@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace CourseRegistration
 {
     public partial class frmMaintainCourses : Form
-    {
+    {   //This form displays the "Course Maintenance" window 
         #region Constructors
         public frmMaintainCourses()
         {
@@ -21,19 +21,42 @@ namespace CourseRegistration
         #endregion Constructors
 
         #region Event Handlers
+        /// <summary>
+        /// When the form loads, initialize the Course listbox, Maximize the window, and add the Delete column to the datagridview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmMaintainCourse_Load(object sender, EventArgs e)
         {
             LoadCourseFromFile();
             this.WindowState = FormWindowState.Maximized;
+
+            DataGridViewLinkColumn Deletelink = new DataGridViewLinkColumn();
+            Deletelink.UseColumnTextForLinkValue = true;
+            Deletelink.HeaderText = "Delete";
+            Deletelink.DataPropertyName = "lnkColumn";
+            Deletelink.LinkBehavior = LinkBehavior.SystemDefault;
+            Deletelink.Text = "Delete";
+            dataGridView1.Columns.Add(Deletelink);
         }
+        /// <summary>
+        /// Set up the form to receive data for a new Course when the user clicks the New button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdNew_Click(object sender, EventArgs e)
-        {   //Set up the form and to receive data for a new course
+        {
             lstCourse.SelectedIndex = -1;
             cmdNew.Enabled = false;
 
             ClearForm();
             txtCourseNumber.Focus();
         }
+        /// <summary>
+        /// When the user clicks Save, validate the data, create a Course object, save the Course in the data file and set various button's disposition
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdSave_Click(object sender, EventArgs e)
         {   //User clicked Save, so validate the fields and save the course in the course store if good data
             if (ValidInput())
@@ -44,43 +67,114 @@ namespace CourseRegistration
                 cmdSave.Enabled = false;
             }
         }
+        /// <summary>
+        /// Course Number text changed so enable the Save button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtCourseNumber_TextChanged(object sender, EventArgs e)
         {
             cmdSave.Enabled = true;
         }
+        /// <summary>
+        /// Course Description text changed so enable the Save button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtCourseDescription_TextChanged(object sender, EventArgs e)
         {
             cmdSave.Enabled = true;
         }
+        /// <summary>
+        /// Start Date text changed so enable the Save button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dtpStartDate_ValueChanged(object sender, EventArgs e)
         {
             cmdSave.Enabled = true;
         }
+        /// <summary>
+        /// End Date text changed so enable the Save button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dtpEndDate_ValueChanged(object sender, EventArgs e)
         {
             cmdSave.Enabled = true;
         }
+        /// <summary>
+        /// Location text changed so enable the Save button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtLocation_TextChanged(object sender, EventArgs e)
         {
             cmdSave.Enabled = true;
         }
+        /// <summary>
+        /// Credits text changed so enable the Save button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtCredits_TextChanged(object sender, EventArgs e)
         {
             cmdSave.Enabled = true;
         }
+        /// <summary>
+        /// Faculty ID text changed so enable the Save button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtFacultyID_TextChanged(object sender, EventArgs e)
         {
             cmdSave.Enabled = true;
         }
+        /// <summary>
+        /// Location selected index changed so enable the Save button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cboLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmdSave.Enabled = true;
+        }
+        /// <summary>
+        /// Credits selected index changed so enable the Save button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cboCredits_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmdSave.Enabled = true;
+        }
+        /// <summary>
+        /// User clicked Delete. Confirm the user's intent, if the Course is not currently schedule, remove from the listbox, clear the form and update the Course CSV file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdDelete_Click(object sender, EventArgs e)
         {   //Delete the course from the ListBox
             if (MessageBox.Show("Are you sure you want to delete this Course?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes))
             {
-                lstCourse.Items.Remove(lstCourse.SelectedItem);
-                ClearForm();
-                SaveCourseToFile();
+                Course course = (Course)lstCourse.SelectedItem;
+                if (Globals.CourseIsScheduled(course.ID))
+                {
+                    MessageBox.Show(course.CourseNumber + " is currently scheduled in the University calendar. Please UnRegister all students from the course before attempting to delete the course.", "Related Data Exists", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    lstCourse.Items.Remove(lstCourse.SelectedItem);
+                    ClearForm();
+                    SaveCourseToFile();
+                }
             }
         }
+        /// <summary>
+        /// User clicked on a Course in the listbox, so populate the form from the Course, expose any Faculty relationships and set various control's dispositions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstCourse_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ((lstCourse.SelectedIndex > -1))
@@ -88,8 +182,10 @@ namespace CourseRegistration
                 // When the user clicks on an existing user, populate the form from the course store
                 Course course = FindCourse(Convert.ToInt16(lstCourse.SelectedIndex));
                 PopulateFormFromCourse(course);
-                LoadRelatedFaculty();
+                ExposeRelatedFaculty();
                 cmdDelete.Enabled = true;
+                lnkAssignFaculty.Enabled = true;
+                splitContainer1.Panel2Collapsed = false;
             }
             else
             {
@@ -99,20 +195,69 @@ namespace CourseRegistration
                 cmdSave.Enabled = false;
             }
         }
+        /// <summary>
+        /// User clicked the Help button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdHelp_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Sorry, but Help is not available yet.", "Help Clicked", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
         }
+        /// <summary>
+        /// User clicked the Close button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        /// <summary>
+        /// User clicked the Assign Faculty link, so popup the Faculty selection form and if "Select" is clicked on that form, save the CourseFaculty update to the CSV file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkAssignFaculty_Click(object sender, EventArgs e)
+        {
+            frmSelectFaculty fSelectFaculty = new frmSelectFaculty();
+            if (fSelectFaculty.ShowDialog().Equals(DialogResult.OK))
+            {
+                CourseFaculty coursefaculty = new CourseFaculty();
+
+                Course course = (Course) lstCourse.SelectedItem;
+                Faculty faculty = (Faculty) fSelectFaculty.cboFaculty.SelectedItem;
+
+                coursefaculty.CourseID = course.ID;
+                coursefaculty.FacultyID = faculty.ID;
+
+
+                SaveCourseFacultyToFile(coursefaculty);
+                splitContainer1.Panel2Collapsed = false;
+            }
+        }
+        /// <summary>
+        /// User clicked on the Delete cell in the data grid view. Delete the CourseFaculty row and re-expose the related Faculty
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //MessageBox.Show("Click: Row=" + e.RowIndex.ToString() + " Column=" +e.ColumnIndex.ToString());
+
+            Int16 FacultyID = Convert.ToInt16(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+            Course course = (Course)lstCourse.SelectedItem;
+            Globals.DeleteCourseFaculty(course.ID, FacultyID);
+            ExposeRelatedFaculty();
+        }
         #endregion Event Handlers
 
         #region Helper Functions
+        /// <summary>
+        /// Clears all the data enterable controls on the form
+        /// </summary>
         private void ClearForm()
-        {   //Clear out all the fields on the form
+        {
             txtCourseNumber.Text = String.Empty;
             txtCourseDescription.Text = String.Empty;
             dtpStartDate.Text = String.Empty;
@@ -120,8 +265,12 @@ namespace CourseRegistration
             cboLocation.Text = String.Empty;
             cboCredits.Text = String.Empty;
         }
+        /// <summary>
+        /// Validates the data enterable controls for minimum validity
+        /// </summary>
+        /// <returns></returns>
         private Boolean ValidInput()
-        {   //The only requirement is a Course Number, start/end date and TODO: FacultyID selection at this point in time
+        {   //The only requirement is a Course Number, start/end date
             if (txtCourseNumber.Text.Equals(String.Empty))
             {
                 System.Windows.Forms.MessageBox.Show("You must provide a course number.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -140,8 +289,11 @@ namespace CourseRegistration
 
             return true;
         }
+        /// <summary>
+        /// Format a Course object from the data enterable controls and save it in the ListBox
+        /// </summary>
         private void SaveCourse()
-        {   //Format a Course object and save it in the ListBox
+        {
             Course course = new Course();
             if (lstCourse.SelectedIndex > -1)
             {
@@ -164,6 +316,10 @@ namespace CourseRegistration
                 lstCourse.Items.Add(course);
             }
         }
+        /// <summary>
+        /// Read through the Course saving the maximum ID in use and increment by 1
+        /// </summary>
+        /// <returns></returns>
         private Int16 GetNextID()
         {
             Int16 nID = -1;
@@ -183,7 +339,10 @@ namespace CourseRegistration
             nID++;
             return nID;
         }
-        private void LoadRelatedFaculty()
+        /// <summary>
+        /// Create a data table from populate it from the Faculty that instruct the Course
+        /// </summary>
+        private void ExposeRelatedFaculty()
         {
             //Get the Course ID for the selected Course
             Course course = FindCourse(Convert.ToInt16(lstCourse.SelectedIndex));
@@ -203,26 +362,24 @@ namespace CourseRegistration
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.DataSource = table;
             splitContainer1.Panel2Collapsed = false;
-
-            /*
-            DataGridViewLinkColumn Deletelink = new DataGridViewLinkColumn();
-            Deletelink.UseColumnTextForLinkValue = true;
-            Deletelink.HeaderText = "Delete";
-            Deletelink.DataPropertyName = "lnkColumn";
-            Deletelink.LinkBehavior = LinkBehavior.SystemDefault;
-            Deletelink.Text = "Delete";
-            dataGridView1.Columns.Add(Deletelink);
-            */
-
         }
+        /// <summary>
+        /// Locate a Course object in the ListBox Course store
+        /// </summary>
+        /// <param name="nIndex">The index of the Course listbox control</param>
+        /// <returns>The Course object related to the nIndex</returns>
         private Course FindCourse(Int16 nIndex)
-        {   //Locate a Course object in the ListBox Course store
+        {
             Course course = new Course();
 
             course = (Course) lstCourse.Items[nIndex];
 
             return course;
         }
+        /// <summary>
+        /// Populate the data enterable controls from a Course object
+        /// </summary>
+        /// <param name="course">The Course object</param>
         private void PopulateFormFromCourse(Course course)
         {   // Populate the fields from the Course object
             txtCourseNumber.Text = course.CourseNumber;
@@ -233,43 +390,55 @@ namespace CourseRegistration
             cboCredits.Text = course.Credits;
             txtID.Text = course.ID.ToString();
         }
+        /// <summary>
+        /// Load the Course listbox from the data in the Course CSV file
+        /// </summary>
         private void LoadCourseFromFile()
         {
             String line;
             System.IO.StreamReader file = new System.IO.StreamReader("Course.csv");
             while ((line = file.ReadLine()) != null)
             {
-                String[] szColumn = line.Split(',');
-                Course course = new Course();
-                course.ID = Convert.ToInt16(szColumn[0]);
-                course.CourseNumber = szColumn[1];
-                course.CourseDescription = szColumn[2];
-                course.StartDate = szColumn[3];
-                course.EndDate = szColumn[4];
-                course.Location = szColumn[5];
-                course.Credits = szColumn[6];
-                lstCourse.Items.Add(course);
+                try
+                {
+                Course course = new Course(line);
+                if (course != null)
+                {
+                    lstCourse.Items.Add(course);
+                }
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message, "Exception Occurred", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             file.Close();
         }
+        /// <summary>
+        /// Write the contents of the items in the Course listbox to the Course CSV file
+        /// </summary>
         private void SaveCourseToFile()
         {
             using (System.IO.StreamWriter file = new System.IO.StreamWriter("Course.csv"))
             {
                 foreach (Course course in lstCourse.Items)
                 {
-                    String line = String.Empty;
-                    line += course.ID.ToString() + ",";
-                    line += course.CourseNumber + ",";
-                    line += course.CourseDescription + ",";
-                    line += course.StartDate + ",";
-                    line += course.EndDate + ",";
-                    line += course.Location + ",";
-                    line += course.Credits;
-
-                    file.WriteLine(line);
+                    file.WriteLine(course.ToRecord());
                 }
             }
+        }
+        /// <summary>
+        /// Append a CourseFaculty object to the CourseFaculty CSV file
+        /// </summary>
+        /// <param name="coursefaculty"></param>
+        private void SaveCourseFacultyToFile(CourseFaculty coursefaculty)
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter("CourseFaculty.csv", true))
+            {
+                file.WriteLine(coursefaculty.ToRecord());
+                file.Close();
+            }
+            ExposeRelatedFaculty();
         }
         #endregion Helper Functions
     }

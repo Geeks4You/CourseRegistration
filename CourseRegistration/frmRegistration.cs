@@ -11,12 +11,20 @@ using System.Windows.Forms;
 namespace CourseRegistration
 {
     public partial class frmRegistration : Form
-    {
+    {   //This form displays the "Course Registration" window 
+        #region Constructors
         public frmRegistration()
         {
             InitializeComponent();
         }
+        #endregion Constructors
 
+        #region Event Handlers
+        /// <summary>
+        /// When the form loads, load the Student combox box, load the Course combox box, Maximize the window and add the delete link column to the data grid view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmRegistrationMenu_Load(object sender, EventArgs e)
         {
             Globals.LoadStudents(cboStudents);
@@ -31,7 +39,11 @@ namespace CourseRegistration
             Deletelink.Text = "Delete";
             dataGridView1.Columns.Add(Deletelink);
         }
-
+        /// <summary>
+        /// Student selected, so Enable the Register button if Course is selected and expose the Student's Schedule
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cboStudents_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmdRegister.Enabled = ((cboStudents.SelectedIndex > -1) && (cboCourses.SelectedIndex > -1));
@@ -41,18 +53,39 @@ namespace CourseRegistration
                 ExposeStudentSchedule(student);
             }
         }
-
+        /// <summary>
+        /// Course selected, so expose the Start Date, Enable the Register button. If Start Date has passed, show Class is Closed and disable Register button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cboCourses_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Course course = null;
             if (cboCourses.SelectedIndex > -1)
             {
-                Course course = (Course)cboCourses.SelectedItem;
+                course = (Course)cboCourses.SelectedItem;
                 lblStartDate.Enabled = true;
                 lblStartDate.Text = "Start Date: " + course.StartDate;
             }
             cmdRegister.Enabled = ((cboStudents.SelectedIndex > -1) && (cboCourses.SelectedIndex > -1));
+            if (course != null)
+            {
+                if (Convert.ToDateTime(course.StartDate) > DateTime.Now)
+                {
+                    lblClassClosed.Visible = false;
+                }
+                else
+                {
+                    cmdRegister.Enabled = false;
+                    lblClassClosed.Visible = true;
+                }
+            }
         }
-
+        /// <summary>
+        /// Register button clicked. So, append Registration to Registration CSV file and re-Expose the student's schedule 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdRegister_Click(object sender, EventArgs e)
         {
             using (System.IO.StreamWriter file = new System.IO.StreamWriter("Registration.csv", true))
@@ -68,6 +101,59 @@ namespace CourseRegistration
                 ExposeStudentSchedule(student);
             }
         }
+        /// <summary>
+        /// Delete cell clicked, so delete the registration and re-Expose the Student Schedule.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Student student = (Student)cboStudents.SelectedItem;
+            Int16 CourseID = Convert.ToInt16(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+            Course course = Globals.GetCourse(Convert.ToInt16(dataGridView1.Rows[e.RowIndex].Cells[1].Value));
+            Globals.DeleteRegistration(student.ID, course.ID);
+
+            ExposeStudentSchedule(student);
+        }
+        /// <summary>
+        /// When the split container resizes, make sure all content controls are uniformly resized because they are not docked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void splitContainer1_Resize(object sender, EventArgs e)
+        {
+            ResizeDataGridView();
+        }
+        /// <summary>
+        /// Content controls are uniformly resized because they are not docked
+        /// </summary>
+        private void ResizeDataGridView()
+        {
+            try
+            {
+                dataGridView1.Top = 22;
+                dataGridView1.Left = 0;
+                dataGridView1.Height = splitContainer1.Panel2.Height - 22;
+                dataGridView1.Width = splitContainer1.Panel2.Width;
+            }
+            catch (Exception) { }
+        }
+        /// <summary>
+        /// When the split container's panel #2 resizes, make sure all content controls are uniformly resized because they are not docked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void splitContainer1_Panel2_Resize(object sender, EventArgs e)
+        {
+            ResizeDataGridView();
+        }
+        #endregion Event Handlers
+
+        #region Helper functions
+        /// <summary>
+        /// Build the Schedule table and populate it from the Registration CSV file
+        /// </summary>
+        /// <param name="student"></param>
         private void ExposeStudentSchedule(Student student)
         {
             // Create two typed columns in a DataTable.
@@ -80,15 +166,12 @@ namespace CourseRegistration
             System.IO.StreamReader RegistrationFile = new System.IO.StreamReader("Registration.csv");
             while ((RegistrationLine = RegistrationFile.ReadLine()) != null)
             {
-                String[] szColumn = RegistrationLine.Split(',');
-                if (szColumn.Length == 2)
+                Registration registration = new Registration(RegistrationLine);
+                if (registration.StudentID.Equals(student.ID))
                 {
-                    Registration registration = new Registration();
-                    registration.StudentID = Convert.ToInt16(szColumn[0]);
-                    registration.CourseID = Convert.ToInt16(szColumn[1]);
-                    if (registration.StudentID.Equals(student.ID))
+                    Course course = Globals.GetCourse(registration.CourseID);
+                    if (course != null)
                     {
-                        Course course = Globals.GetCourse(registration.CourseID);
                         table.Rows.Add(course.ID, course.CourseNumber, course.StartDate);
                     }
                 }
@@ -99,6 +182,7 @@ namespace CourseRegistration
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.DataSource = table;
 
+            //Title the headers of the remaining columns
             dataGridView1.Columns[0].HeaderText = "UnRegister";
             dataGridView1.Columns[1].HeaderText = "Course ID";
             dataGridView1.Columns[1].Visible = false;
@@ -109,39 +193,6 @@ namespace CourseRegistration
 
             splitContainer1.Panel2Collapsed = false;
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //MessageBox.Show("Click: Row=" + e.RowIndex.ToString() + " Column=" +e.ColumnIndex.ToString());
-
-            Student student = (Student)cboStudents.SelectedItem;
-            Int16 CourseID = Convert.ToInt16(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
-            Course course = Globals.GetCourse(Convert.ToInt16(dataGridView1.Rows[e.RowIndex].Cells[1].Value));
-            Globals.DeleteRegistration(student.ID, course.ID);
-
-            ExposeStudentSchedule(student);
-        }
-
-        private void splitContainer1_Resize(object sender, EventArgs e)
-        {
-            ResizeDataGridView();
-        }
-
-        private void ResizeDataGridView()
-        {
-            try
-            {
-                dataGridView1.Top = 22;
-                dataGridView1.Left = 0;
-                dataGridView1.Height = splitContainer1.Panel2.Height - 22;
-                dataGridView1.Width = splitContainer1.Panel2.Width;
-            }
-            catch (Exception) { }
-        }
-
-        private void splitContainer1_Panel2_Resize(object sender, EventArgs e)
-        {
-            ResizeDataGridView();
-        }
+        #endregion Helper functions
     }
 }

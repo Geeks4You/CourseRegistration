@@ -29,217 +29,343 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaintainStudents));
-            this.updateStu = new System.Windows.Forms.Button();
-            this.gradDate = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.editStu = new System.Windows.Forms.Button();
-            this.addStu = new System.Windows.Forms.Button();
-            this.fosStu = new System.Windows.Forms.ComboBox();
-            this.elStu = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.stuID = new System.Windows.Forms.TextBox();
-            this.addressStu = new System.Windows.Forms.TextBox();
-            this.lNameStu = new System.Windows.Forms.TextBox();
-            this.fNameStu = new System.Windows.Forms.TextBox();
-            this.listStu = new System.Windows.Forms.ListBox();
+            this.cmdNew = new System.Windows.Forms.Button();
+            this.lblStudentsSelLst = new System.Windows.Forms.Label();
+            this.lstStudent = new System.Windows.Forms.ListBox();
+            this.cmdSave = new System.Windows.Forms.Button();
+            this.cmdClose = new System.Windows.Forms.Button();
+            this.cmdHelp = new System.Windows.Forms.Button();
+            this.cmdDelete = new System.Windows.Forms.Button();
+            this.mtbPhone = new System.Windows.Forms.MaskedTextBox();
+            this.mtbZip = new System.Windows.Forms.MaskedTextBox();
+            this.cboState = new System.Windows.Forms.ComboBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtAddressLine2 = new System.Windows.Forms.TextBox();
+            this.txtAddressLine1 = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblProgram = new System.Windows.Forms.Label();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.lblZip = new System.Windows.Forms.Label();
+            this.lblState = new System.Windows.Forms.Label();
+            this.lblCity = new System.Windows.Forms.Label();
+            this.lblAddressLine2 = new System.Windows.Forms.Label();
+            this.lblAddressLine1 = new System.Windows.Forms.Label();
+            this.lblLastName = new System.Windows.Forms.Label();
+            this.lblFirstName = new System.Windows.Forms.Label();
+            this.lblID = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.cboProgram = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // updateStu
+            // cmdNew
             // 
-            this.updateStu.Location = new System.Drawing.Point(450, 282);
-            this.updateStu.Name = "updateStu";
-            this.updateStu.Size = new System.Drawing.Size(95, 23);
-            this.updateStu.TabIndex = 38;
-            this.updateStu.Text = "Update Student";
-            this.updateStu.UseVisualStyleBackColor = true;
+            this.cmdNew.Location = new System.Drawing.Point(239, 324);
+            this.cmdNew.Name = "cmdNew";
+            this.cmdNew.Size = new System.Drawing.Size(75, 23);
+            this.cmdNew.TabIndex = 12;
+            this.cmdNew.Text = "New";
+            this.cmdNew.UseVisualStyleBackColor = true;
+            this.cmdNew.Click += new System.EventHandler(this.cmdNew_Click);
             // 
-            // gradDate
+            // lblStudentsSelLst
             // 
-            this.gradDate.Location = new System.Drawing.Point(450, 224);
-            this.gradDate.Name = "gradDate";
-            this.gradDate.Size = new System.Drawing.Size(200, 20);
-            this.gradDate.TabIndex = 37;
+            this.lblStudentsSelLst.Location = new System.Drawing.Point(29, 34);
+            this.lblStudentsSelLst.Name = "lblStudentsSelLst";
+            this.lblStudentsSelLst.Size = new System.Drawing.Size(120, 16);
+            this.lblStudentsSelLst.TabIndex = 60;
+            this.lblStudentsSelLst.Text = "Students Selection List:";
             // 
-            // label8
+            // lstStudent
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(346, 230);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 13);
-            this.label8.TabIndex = 36;
-            this.label8.Text = "Graduation Date";
+            this.lstStudent.FormattingEnabled = true;
+            this.lstStudent.Location = new System.Drawing.Point(29, 53);
+            this.lstStudent.Name = "lstStudent";
+            this.lstStudent.Size = new System.Drawing.Size(192, 290);
+            this.lstStudent.TabIndex = 1;
+            this.lstStudent.SelectedIndexChanged += new System.EventHandler(this.lstStudents_SelectedIndexChanged);
             // 
-            // editStu
+            // cmdSave
             // 
-            this.editStu.Location = new System.Drawing.Point(67, 311);
-            this.editStu.Name = "editStu";
-            this.editStu.Size = new System.Drawing.Size(130, 25);
-            this.editStu.TabIndex = 35;
-            this.editStu.Text = "Edit Selected Student";
-            this.editStu.UseVisualStyleBackColor = true;
+            this.cmdSave.Enabled = false;
+            this.cmdSave.Location = new System.Drawing.Point(324, 324);
+            this.cmdSave.Name = "cmdSave";
+            this.cmdSave.Size = new System.Drawing.Size(75, 23);
+            this.cmdSave.TabIndex = 13;
+            this.cmdSave.Text = "Save";
+            this.cmdSave.UseVisualStyleBackColor = true;
+            this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
             // 
-            // addStu
+            // cmdClose
             // 
-            this.addStu.Location = new System.Drawing.Point(450, 250);
-            this.addStu.Name = "addStu";
-            this.addStu.Size = new System.Drawing.Size(75, 23);
-            this.addStu.TabIndex = 34;
-            this.addStu.Text = "Add Student";
-            this.addStu.UseVisualStyleBackColor = true;
+            this.cmdClose.Location = new System.Drawing.Point(567, 324);
+            this.cmdClose.Name = "cmdClose";
+            this.cmdClose.Size = new System.Drawing.Size(75, 23);
+            this.cmdClose.TabIndex = 16;
+            this.cmdClose.Text = "Close";
+            this.cmdClose.UseVisualStyleBackColor = true;
+            this.cmdClose.Click += new System.EventHandler(this.cmdClose_Click);
             // 
-            // fosStu
+            // cmdHelp
             // 
-            this.fosStu.FormattingEnabled = true;
-            this.fosStu.Location = new System.Drawing.Point(450, 171);
-            this.fosStu.Name = "fosStu";
-            this.fosStu.Size = new System.Drawing.Size(121, 21);
-            this.fosStu.TabIndex = 33;
-            this.fosStu.Text = "Select...";
+            this.cmdHelp.Location = new System.Drawing.Point(486, 324);
+            this.cmdHelp.Name = "cmdHelp";
+            this.cmdHelp.Size = new System.Drawing.Size(75, 23);
+            this.cmdHelp.TabIndex = 15;
+            this.cmdHelp.Text = "Help";
+            this.cmdHelp.UseVisualStyleBackColor = true;
+            this.cmdHelp.Click += new System.EventHandler(this.cmdHelp_Click);
             // 
-            // elStu
+            // cmdDelete
             // 
-            this.elStu.FormattingEnabled = true;
-            this.elStu.Items.AddRange(new object[] {
-            "Freshman",
-            "Sophomore",
-            "Junior",
-            "Senior"});
-            this.elStu.Location = new System.Drawing.Point(450, 197);
-            this.elStu.Name = "elStu";
-            this.elStu.Size = new System.Drawing.Size(121, 21);
-            this.elStu.TabIndex = 32;
-            this.elStu.Text = "Select...";
+            this.cmdDelete.Enabled = false;
+            this.cmdDelete.Location = new System.Drawing.Point(405, 324);
+            this.cmdDelete.Name = "cmdDelete";
+            this.cmdDelete.Size = new System.Drawing.Size(75, 23);
+            this.cmdDelete.TabIndex = 14;
+            this.cmdDelete.Text = "Delete";
+            this.cmdDelete.UseVisualStyleBackColor = true;
+            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
-            // label7
+            // mtbPhone
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(346, 200);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 13);
-            this.label7.TabIndex = 31;
-            this.label7.Text = "Education Level";
+            this.mtbPhone.Location = new System.Drawing.Point(346, 231);
+            this.mtbPhone.Mask = "(999)000-0000";
+            this.mtbPhone.Name = "mtbPhone";
+            this.mtbPhone.Size = new System.Drawing.Size(128, 20);
+            this.mtbPhone.TabIndex = 10;
+            this.mtbPhone.TextChanged += new System.EventHandler(this.mtbPhone_TextChanged);
             // 
-            // label6
+            // mtbZip
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(346, 174);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 13);
-            this.label6.TabIndex = 30;
-            this.label6.Text = "Field of Study";
+            this.mtbZip.Location = new System.Drawing.Point(346, 209);
+            this.mtbZip.Mask = "00000-9999";
+            this.mtbZip.Name = "mtbZip";
+            this.mtbZip.Size = new System.Drawing.Size(128, 20);
+            this.mtbZip.TabIndex = 9;
+            this.mtbZip.TextChanged += new System.EventHandler(this.mtbZip_TextChanged);
             // 
-            // label5
+            // cboState
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(346, 148);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 13);
-            this.label5.TabIndex = 29;
-            this.label5.Text = "Student ID";
+            this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboState.FormattingEnabled = true;
+            this.cboState.Location = new System.Drawing.Point(346, 187);
+            this.cboState.Name = "cboState";
+            this.cboState.Size = new System.Drawing.Size(128, 21);
+            this.cboState.TabIndex = 8;
+            this.cboState.SelectedIndexChanged += new System.EventHandler(this.cboState_SelectedIndexChanged);
             // 
-            // label4
+            // txtEmail
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(346, 122);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
-            this.label4.TabIndex = 28;
-            this.label4.Text = "Adress";
+            this.txtEmail.Location = new System.Drawing.Point(346, 253);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(256, 20);
+            this.txtEmail.TabIndex = 11;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
-            // label3
+            // txtCity
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(346, 96);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "Last Name";
+            this.txtCity.Location = new System.Drawing.Point(346, 165);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(128, 20);
+            this.txtCity.TabIndex = 7;
+            this.txtCity.TextChanged += new System.EventHandler(this.txtCity_TextChanged);
             // 
-            // label2
+            // txtAddressLine2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(346, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "First Name";
+            this.txtAddressLine2.Location = new System.Drawing.Point(346, 143);
+            this.txtAddressLine2.Name = "txtAddressLine2";
+            this.txtAddressLine2.Size = new System.Drawing.Size(128, 20);
+            this.txtAddressLine2.TabIndex = 6;
+            this.txtAddressLine2.TextChanged += new System.EventHandler(this.txtAddressLine2_TextChanged);
             // 
-            // stuID
+            // txtAddressLine1
             // 
-            this.stuID.BackColor = System.Drawing.SystemColors.Info;
-            this.stuID.Location = new System.Drawing.Point(450, 145);
-            this.stuID.Name = "stuID";
-            this.stuID.ReadOnly = true;
-            this.stuID.Size = new System.Drawing.Size(100, 20);
-            this.stuID.TabIndex = 25;
+            this.txtAddressLine1.Location = new System.Drawing.Point(346, 121);
+            this.txtAddressLine1.Name = "txtAddressLine1";
+            this.txtAddressLine1.Size = new System.Drawing.Size(128, 20);
+            this.txtAddressLine1.TabIndex = 5;
+            this.txtAddressLine1.TextChanged += new System.EventHandler(this.txtAddressLine1_TextChanged);
             // 
-            // addressStu
+            // txtLastName
             // 
-            this.addressStu.Location = new System.Drawing.Point(450, 119);
-            this.addressStu.Name = "addressStu";
-            this.addressStu.Size = new System.Drawing.Size(197, 20);
-            this.addressStu.TabIndex = 24;
+            this.txtLastName.Location = new System.Drawing.Point(346, 77);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(128, 20);
+            this.txtLastName.TabIndex = 3;
+            this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
-            // lNameStu
+            // txtFirstName
             // 
-            this.lNameStu.Location = new System.Drawing.Point(450, 93);
-            this.lNameStu.Name = "lNameStu";
-            this.lNameStu.Size = new System.Drawing.Size(100, 20);
-            this.lNameStu.TabIndex = 23;
+            this.txtFirstName.Location = new System.Drawing.Point(346, 55);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(128, 20);
+            this.txtFirstName.TabIndex = 2;
+            this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             // 
-            // fNameStu
+            // lblEmail
             // 
-            this.fNameStu.Location = new System.Drawing.Point(450, 67);
-            this.fNameStu.Name = "fNameStu";
-            this.fNameStu.Size = new System.Drawing.Size(100, 20);
-            this.fNameStu.TabIndex = 22;
+            this.lblEmail.Location = new System.Drawing.Point(244, 253);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(96, 16);
+            this.lblEmail.TabIndex = 53;
+            this.lblEmail.Text = "Email:";
+            this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // listStu
+            // lblProgram
             // 
-            this.listStu.FormattingEnabled = true;
-            this.listStu.Items.AddRange(new object[] {
-            "Andrew Brown",
-            "Bob Dart",
-            "Carter Evans",
-            "Dale Gilbert",
-            "Frank Hammond"});
-            this.listStu.Location = new System.Drawing.Point(10, 67);
-            this.listStu.Name = "listStu";
-            this.listStu.Size = new System.Drawing.Size(242, 238);
-            this.listStu.TabIndex = 21;
+            this.lblProgram.Location = new System.Drawing.Point(238, 99);
+            this.lblProgram.Name = "lblProgram";
+            this.lblProgram.Size = new System.Drawing.Size(96, 16);
+            this.lblProgram.TabIndex = 50;
+            this.lblProgram.Text = "College Program:";
+            this.lblProgram.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.Location = new System.Drawing.Point(244, 231);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(96, 16);
+            this.lblPhone.TabIndex = 49;
+            this.lblPhone.Text = "Phone:";
+            this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblZip
+            // 
+            this.lblZip.Location = new System.Drawing.Point(244, 209);
+            this.lblZip.Name = "lblZip";
+            this.lblZip.Size = new System.Drawing.Size(96, 16);
+            this.lblZip.TabIndex = 47;
+            this.lblZip.Text = "Zip:";
+            this.lblZip.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblState
+            // 
+            this.lblState.Location = new System.Drawing.Point(244, 187);
+            this.lblState.Name = "lblState";
+            this.lblState.Size = new System.Drawing.Size(96, 16);
+            this.lblState.TabIndex = 45;
+            this.lblState.Text = "State:";
+            this.lblState.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblCity
+            // 
+            this.lblCity.Location = new System.Drawing.Point(244, 165);
+            this.lblCity.Name = "lblCity";
+            this.lblCity.Size = new System.Drawing.Size(96, 16);
+            this.lblCity.TabIndex = 43;
+            this.lblCity.Text = "City:";
+            this.lblCity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblAddressLine2
+            // 
+            this.lblAddressLine2.Location = new System.Drawing.Point(244, 143);
+            this.lblAddressLine2.Name = "lblAddressLine2";
+            this.lblAddressLine2.Size = new System.Drawing.Size(96, 16);
+            this.lblAddressLine2.TabIndex = 40;
+            this.lblAddressLine2.Text = "Address Line 2:";
+            this.lblAddressLine2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblAddressLine1
+            // 
+            this.lblAddressLine1.Location = new System.Drawing.Point(244, 121);
+            this.lblAddressLine1.Name = "lblAddressLine1";
+            this.lblAddressLine1.Size = new System.Drawing.Size(96, 16);
+            this.lblAddressLine1.TabIndex = 38;
+            this.lblAddressLine1.Text = "Address Line 1:";
+            this.lblAddressLine1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblLastName
+            // 
+            this.lblLastName.Location = new System.Drawing.Point(241, 77);
+            this.lblLastName.Name = "lblLastName";
+            this.lblLastName.Size = new System.Drawing.Size(96, 16);
+            this.lblLastName.TabIndex = 35;
+            this.lblLastName.Text = "Last Name:";
+            this.lblLastName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblFirstName
+            // 
+            this.lblFirstName.Location = new System.Drawing.Point(241, 55);
+            this.lblFirstName.Name = "lblFirstName";
+            this.lblFirstName.Size = new System.Drawing.Size(96, 16);
+            this.lblFirstName.TabIndex = 32;
+            this.lblFirstName.Text = "First Name:";
+            this.lblFirstName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblID
+            // 
+            this.lblID.Location = new System.Drawing.Point(244, 275);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(96, 16);
+            this.lblID.TabIndex = 61;
+            this.lblID.Text = "ID:";
+            this.lblID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtID
+            // 
+            this.txtID.BackColor = System.Drawing.Color.Silver;
+            this.txtID.Location = new System.Drawing.Point(346, 275);
+            this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
+            this.txtID.Size = new System.Drawing.Size(127, 20);
+            this.txtID.TabIndex = 62;
+            // 
+            // cboProgram
+            // 
+            this.cboProgram.FormattingEnabled = true;
+            this.cboProgram.Items.AddRange(new object[] {
+            "Business Management",
+            "Communications",
+            "Education",
+            "Humanities & Science",
+            "Mathmatics & Science",
+            "Technology & Cyber Security"});
+            this.cboProgram.Location = new System.Drawing.Point(346, 99);
+            this.cboProgram.Name = "cboProgram";
+            this.cboProgram.Size = new System.Drawing.Size(256, 21);
+            this.cboProgram.TabIndex = 64;
             // 
             // frmMaintainStudents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(661, 402);
-            this.Controls.Add(this.updateStu);
-            this.Controls.Add(this.gradDate);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.editStu);
-            this.Controls.Add(this.addStu);
-            this.Controls.Add(this.fosStu);
-            this.Controls.Add(this.elStu);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.stuID);
-            this.Controls.Add(this.addressStu);
-            this.Controls.Add(this.lNameStu);
-            this.Controls.Add(this.fNameStu);
-            this.Controls.Add(this.listStu);
+            this.Controls.Add(this.cboProgram);
+            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.lblID);
+            this.Controls.Add(this.cmdNew);
+            this.Controls.Add(this.lblStudentsSelLst);
+            this.Controls.Add(this.lstStudent);
+            this.Controls.Add(this.cmdSave);
+            this.Controls.Add(this.cmdClose);
+            this.Controls.Add(this.cmdHelp);
+            this.Controls.Add(this.cmdDelete);
+            this.Controls.Add(this.mtbPhone);
+            this.Controls.Add(this.mtbZip);
+            this.Controls.Add(this.cboState);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtCity);
+            this.Controls.Add(this.txtAddressLine2);
+            this.Controls.Add(this.txtAddressLine1);
+            this.Controls.Add(this.txtLastName);
+            this.Controls.Add(this.txtFirstName);
+            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.lblProgram);
+            this.Controls.Add(this.lblPhone);
+            this.Controls.Add(this.lblZip);
+            this.Controls.Add(this.lblState);
+            this.Controls.Add(this.lblCity);
+            this.Controls.Add(this.lblAddressLine2);
+            this.Controls.Add(this.lblAddressLine1);
+            this.Controls.Add(this.lblLastName);
+            this.Controls.Add(this.lblFirstName);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMaintainStudents";
             this.Text = "Maintain Students";
-            this.Load += new System.EventHandler(this.frmMaintainStudent_Load);
+            this.Load += new System.EventHandler(this.frmMaintainStudents_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,24 +373,34 @@
 
         #endregion
 
-        private System.Windows.Forms.Button updateStu;
-        private System.Windows.Forms.DateTimePicker gradDate;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button editStu;
-        private System.Windows.Forms.Button addStu;
-        private System.Windows.Forms.ComboBox fosStu;
-        private System.Windows.Forms.ComboBox elStu;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox stuID;
-        private System.Windows.Forms.TextBox addressStu;
-        private System.Windows.Forms.TextBox lNameStu;
-        private System.Windows.Forms.TextBox fNameStu;
-        private System.Windows.Forms.ListBox listStu;
-
+        internal System.Windows.Forms.Button cmdNew;
+        internal System.Windows.Forms.Label lblStudentsSelLst;
+        internal System.Windows.Forms.ListBox lstStudent;
+        internal System.Windows.Forms.Button cmdSave;
+        internal System.Windows.Forms.Button cmdClose;
+        internal System.Windows.Forms.Button cmdHelp;
+        internal System.Windows.Forms.Button cmdDelete;
+        internal System.Windows.Forms.MaskedTextBox mtbPhone;
+        internal System.Windows.Forms.MaskedTextBox mtbZip;
+        internal System.Windows.Forms.ComboBox cboState;
+        internal System.Windows.Forms.TextBox txtEmail;
+        internal System.Windows.Forms.TextBox txtCity;
+        internal System.Windows.Forms.TextBox txtAddressLine2;
+        internal System.Windows.Forms.TextBox txtAddressLine1;
+        internal System.Windows.Forms.TextBox txtLastName;
+        internal System.Windows.Forms.TextBox txtFirstName;
+        internal System.Windows.Forms.Label lblEmail;
+        internal System.Windows.Forms.Label lblProgram;
+        internal System.Windows.Forms.Label lblPhone;
+        internal System.Windows.Forms.Label lblZip;
+        internal System.Windows.Forms.Label lblState;
+        internal System.Windows.Forms.Label lblCity;
+        internal System.Windows.Forms.Label lblAddressLine2;
+        internal System.Windows.Forms.Label lblAddressLine1;
+        internal System.Windows.Forms.Label lblLastName;
+        internal System.Windows.Forms.Label lblFirstName;
+        internal System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.ComboBox cboProgram;
     }
 }

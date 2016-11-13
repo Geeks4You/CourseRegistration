@@ -12,6 +12,7 @@ namespace CourseRegistration
 {
     public partial class frmAbout : Form
     {
+        //This form displays the "About" content 
         public frmAbout()
         {
             InitializeComponent();

@@ -38,6 +38,7 @@
             this.cboCourses = new System.Windows.Forms.ComboBox();
             this.lblStudentScheduled = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblClassClosed = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -82,7 +83,7 @@
             // cmdRegister
             // 
             this.cmdRegister.Enabled = false;
-            this.cmdRegister.Location = new System.Drawing.Point(179, 77);
+            this.cmdRegister.Location = new System.Drawing.Point(179, 99);
             this.cmdRegister.Name = "cmdRegister";
             this.cmdRegister.Size = new System.Drawing.Size(121, 23);
             this.cmdRegister.TabIndex = 5;
@@ -99,6 +100,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lblClassClosed);
             this.splitContainer1.Panel1.Controls.Add(this.cboStudents);
             this.splitContainer1.Panel1.Controls.Add(this.cboCourses);
             this.splitContainer1.Panel1.Controls.Add(this.lblSelectStudent);
@@ -133,7 +135,7 @@
             this.lblStudentScheduled.ForeColor = System.Drawing.Color.Lime;
             this.lblStudentScheduled.Location = new System.Drawing.Point(0, 0);
             this.lblStudentScheduled.Name = "lblStudentScheduled";
-            this.lblStudentScheduled.Size = new System.Drawing.Size(661, 20);
+            this.lblStudentScheduled.Size = new System.Drawing.Size(150, 20);
             this.lblStudentScheduled.TabIndex = 1;
             this.lblStudentScheduled.Text = "This student is scheduled in the following courses on the following start dates:";
             this.lblStudentScheduled.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -146,6 +148,19 @@
             this.dataGridView1.Size = new System.Drawing.Size(661, 97);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // lblClassClosed
+            // 
+            this.lblClassClosed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lblClassClosed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClassClosed.ForeColor = System.Drawing.Color.Red;
+            this.lblClassClosed.Location = new System.Drawing.Point(179, 77);
+            this.lblClassClosed.Name = "lblClassClosed";
+            this.lblClassClosed.Size = new System.Drawing.Size(386, 20);
+            this.lblClassClosed.TabIndex = 8;
+            this.lblClassClosed.Text = "This class has been closed for registration because it has already commenced.";
+            this.lblClassClosed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblClassClosed.Visible = false;
             // 
             // frmRegistration
             // 
@@ -177,6 +192,7 @@
         private System.Windows.Forms.ComboBox cboCourses;
         private System.Windows.Forms.Label lblStudentScheduled;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lblClassClosed;
 
     }
 }

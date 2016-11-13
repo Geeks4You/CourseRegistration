@@ -51,6 +51,7 @@
             this.cboLocation = new System.Windows.Forms.ComboBox();
             this.cboCredits = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lnkAssignFaculty = new System.Windows.Forms.LinkLabel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lblCourseFaculty = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -245,6 +246,7 @@
             this.cboLocation.Name = "cboLocation";
             this.cboLocation.Size = new System.Drawing.Size(121, 21);
             this.cboLocation.TabIndex = 99;
+            this.cboLocation.SelectedIndexChanged += new System.EventHandler(this.cboLocation_SelectedIndexChanged);
             // 
             // cboCredits
             // 
@@ -258,6 +260,7 @@
             this.cboCredits.Name = "cboCredits";
             this.cboCredits.Size = new System.Drawing.Size(121, 21);
             this.cboCredits.TabIndex = 100;
+            this.cboCredits.SelectedIndexChanged += new System.EventHandler(this.cboCredits_SelectedIndexChanged);
             // 
             // splitContainer1
             // 
@@ -268,6 +271,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lnkAssignFaculty);
             this.splitContainer1.Panel1.Controls.Add(this.lblCourseSelLst);
             this.splitContainer1.Panel1.Controls.Add(this.cboCredits);
             this.splitContainer1.Panel1.Controls.Add(this.lblCourseNum);
@@ -294,9 +298,22 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer1.Panel2.Controls.Add(this.lblCourseFaculty);
+            this.splitContainer1.Panel2Collapsed = true;
             this.splitContainer1.Size = new System.Drawing.Size(682, 604);
-            this.splitContainer1.SplitterDistance = 448;
+            this.splitContainer1.SplitterDistance = 447;
             this.splitContainer1.TabIndex = 101;
+            // 
+            // lnkAssignFaculty
+            // 
+            this.lnkAssignFaculty.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lnkAssignFaculty.Enabled = false;
+            this.lnkAssignFaculty.Location = new System.Drawing.Point(0, 591);
+            this.lnkAssignFaculty.Name = "lnkAssignFaculty";
+            this.lnkAssignFaculty.Size = new System.Drawing.Size(682, 13);
+            this.lnkAssignFaculty.TabIndex = 101;
+            this.lnkAssignFaculty.TabStop = true;
+            this.lnkAssignFaculty.Text = "Add Faculty to Course:";
+            this.lnkAssignFaculty.Click += new System.EventHandler(this.lnkAssignFaculty_Click);
             // 
             // dataGridView1
             // 
@@ -304,8 +321,9 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 16);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(682, 136);
+            this.dataGridView1.Size = new System.Drawing.Size(150, 30);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // lblCourseFaculty
             // 
@@ -314,7 +332,7 @@
             this.lblCourseFaculty.ForeColor = System.Drawing.Color.Lime;
             this.lblCourseFaculty.Location = new System.Drawing.Point(0, 0);
             this.lblCourseFaculty.Name = "lblCourseFaculty";
-            this.lblCourseFaculty.Size = new System.Drawing.Size(682, 16);
+            this.lblCourseFaculty.Size = new System.Drawing.Size(150, 16);
             this.lblCourseFaculty.TabIndex = 0;
             this.lblCourseFaculty.Text = "This course is taught by the following instructor(s)";
             this.lblCourseFaculty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -365,5 +383,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lblCourseFaculty;
+        private System.Windows.Forms.LinkLabel lnkAssignFaculty;
     }
 }
